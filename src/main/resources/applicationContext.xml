@@ -1,14 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/context/
-  http://www.springframework.org/schema/context/spring-context.xsd">
-
-
-    <bean name="student" class="com.sadegh.spring.context.Student"/>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--  http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--  http://www.springframework.org/schema/context/-->
+<!--  http://www.springframework.org/schema/context/spring-context.xsd">-->
 
 
 
-</beans>
+<!--    <context:component-scan base-package="com.sadegh.spring.context"/>-->
+<!--    -->
+<!--    <bean name="logger" class="org.apache.log4j.Logger">-->
+<!--        <constructor-arg name="name" value="logger"></constructor-arg>-->
+<!--    </bean>-->
+
+
+
+
+
+<!--&lt;!&ndash;    <bean name="student" class="com.sadegh.spring.context.Student" scope="singleton" init-method="init">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <property name="name" value="ali"></property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="book" ref="book"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="age" value="10"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="family" value="Khoshnama"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <bean name="book" class="com.sadegh.spring.context.HistoryBook">&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="price" value="10000"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="title" value="NoTitle"/>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
+
+
+
+
+<!--</beans>-->
