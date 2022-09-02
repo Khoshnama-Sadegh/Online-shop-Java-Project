@@ -23,7 +23,7 @@ public class ProductController {
     public String save(@ModelAttribute ProductDTO productDTO){
 
         logger.debug(productDTO);
-        return "index";
+        return "redirect:/";
 
     }
 }
