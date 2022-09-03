@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute ProductDTO productDTO){
+    public String save(ProductDTO productDTO){
         SecureRandom random=new SecureRandom();
         productDTO.setId(random.nextInt(1000));
         logger.debug(productDTO);
