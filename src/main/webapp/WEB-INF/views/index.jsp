@@ -1,3 +1,4 @@
+<%@ taglib prefix="mvc" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: mac
@@ -8,10 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title><mvc:message code="index.page.home" text="Home ALT"/></title>
 </head>
 <body>
-        <a href="/product/show">Add Product</a><br>
-        <a href="/product/get-All">Show Product</a>
+        <a href="/product/show"><mvc:message code="add.product" /></a><br>
+        <a href="/product/get-All"><mvc:message code="show.product"/> </a>
 </body>
 </html>

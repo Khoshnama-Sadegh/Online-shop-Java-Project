@@ -4,9 +4,10 @@ import com.sadegh.models.ProductDTO;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,12 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String save(ProductDTO productDTO){
+    public String save(@ModelAttribute("dto") @Valid ProductDTO productDTO, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "product-show";
+        }
+
         SecureRandom random=new SecureRandom();
         productDTO.setId(random.nextInt(1000));
         logger.debug(productDTO);
