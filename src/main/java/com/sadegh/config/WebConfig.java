@@ -1,6 +1,7 @@
 package com.sadegh.config;
 
 import org.apache.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan("com.sadegh.controllers")
+@ComponentScan(basePackages ={"com.sadegh.controllers", "com.sadegh.services","com.sadegh.data"})
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
@@ -94,6 +95,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver(){
         return new CookieLocaleResolver();
+    }
+
+
+
+    @Bean
+    public ModelMapper mapper(){
+        return new ModelMapper();
     }
 
 

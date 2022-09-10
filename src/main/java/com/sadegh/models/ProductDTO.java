@@ -1,10 +1,7 @@
 package com.sadegh.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -51,5 +48,18 @@ public class ProductDTO {
         this.name = name;
         this.price = price;
         this.type = type;
+    }
+
+
+
+
+    public static class CREATE extends ProductDTO{
+
+    }
+
+
+    @Data
+    public static class DELETE{
+        private int id;
     }
 }

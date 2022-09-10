@@ -1,35 +1,32 @@
 package com.sadegh.controllers;
 
 import com.sadegh.models.ProductDTO;
-import org.apache.log4j.Logger;
+import com.sadegh.services.ProductService;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/product")
+@Log4j
+@AllArgsConstructor
 public class ProductController {
 
+    ProductService productService;
 
 
-    List<ProductDTO> list=new ArrayList<ProductDTO>()
-    {
-        {
-            add(new ProductDTO(102,"1",1000,"home"));
-            add(new ProductDTO(21,"2",2000,"home"));
-        }
-    };
 
-    Logger logger=Logger.getLogger(ProductController.class);
 
     @GetMapping("/show")
-    public String showPage(@ModelAttribute("dto") ProductDTO productDTO){
+    public String showPage(@ModelAttribute("dto") ProductDTO.CREATE productDTO){
         return "product-show";
     }
 
@@ -40,11 +37,7 @@ public class ProductController {
             return "product-show";
         }
 
-        SecureRandom random=new SecureRandom();
-        productDTO.setId(random.nextInt(1000));
-        logger.debug(productDTO);
-        list.add(productDTO);
-        //TODO: must persist dto into database
+        productService.save(productDTO);
 
         return "redirect:/";
 
@@ -52,8 +45,9 @@ public class ProductController {
 
     @GetMapping(value = "/get-All")
     public String  getAll(Model model){
+        List<ProductDTO> productDTOList=productService.findAll();
 
-        model.addAttribute("products",list);
+        model.addAttribute("products",productDTOList);
 
         return "product-list";
 
@@ -62,7 +56,7 @@ public class ProductController {
     @GetMapping("/detail")
     public String detailWithQueryString(@RequestParam("id") int id){
 
-        logger.debug(id);
+        log.debug(id);
 
         return "product-detail";
 
@@ -71,11 +65,21 @@ public class ProductController {
 
     @GetMapping("/detail/{id}")
     public String detailWithPathVariable(@PathVariable("id") int id){
-        logger.debug(id);
+        log.debug(id);
 
         //TODO:get the product and add it to model and then dispatch it to the view
 
         return "product-detail";
+    }
+
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id){
+
+
+        productService.delete(id);
+
+        return "redirect:/product/get-All";
     }
 
 
