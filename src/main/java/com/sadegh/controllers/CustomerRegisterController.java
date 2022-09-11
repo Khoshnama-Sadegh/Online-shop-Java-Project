@@ -3,6 +3,10 @@ package com.sadegh.controllers;
 import com.sadegh.data.entities.BillingAddress;
 import com.sadegh.data.entities.Customer;
 import com.sadegh.data.entities.ShippingAddress;
+import com.sadegh.services.CustomerService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +19,11 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/customer")
+@AllArgsConstructor
+@Data
 public class CustomerRegisterController {
+
+    private CustomerService customerService;
 
     @GetMapping("/register")
     public String registerCustomer(@ModelAttribute("customer") Customer customer){
@@ -33,12 +41,9 @@ public class CustomerRegisterController {
            return "registerCustomer";
        }
 
+       customerService.addCustomer(customer);
 
-
-
-
-
-        return "";
+        return "registerCustomerSuccess";
     }
 
 
