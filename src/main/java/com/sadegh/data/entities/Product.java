@@ -45,8 +45,23 @@ public class Product extends Audit implements Serializable {
     @Range(min = 0)
     private Double unitInStock;
 
+    @NotNull
+    @Range(min = 0)
+    private Double discount;
+
+
+    private String productStatus;
+
+
+    private String productCategory;
+
+
+    @Lob
+    private byte[] img;
+
     @Transient
     private MultipartFile productImage;
+
 
     @OneToMany(mappedBy = "product")
     private List<CartItem> cartItems;

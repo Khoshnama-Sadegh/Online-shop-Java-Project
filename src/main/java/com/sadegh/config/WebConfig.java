@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -102,6 +103,17 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public ModelMapper mapper(){
         return new ModelMapper();
+    }
+
+
+
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver commonsMultipartResolver=new CommonsMultipartResolver();
+        commonsMultipartResolver.setMaxUploadSize(5*1024*1024);  //5MB
+
+        return commonsMultipartResolver;
     }
 
 
