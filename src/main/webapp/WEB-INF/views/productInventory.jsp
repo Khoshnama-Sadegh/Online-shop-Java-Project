@@ -56,7 +56,7 @@
 
             </thead>
 
-            <c:forEach items="${products}" var="product">
+            <c:forEach items="${product}" var="product">
                 <tr>
 
 

@@ -31,20 +31,22 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDTO> findAll() {
+    public List<Product> findAll() {
        List<Product> products= productDAO.finAll();
 
-
-        List<ProductDTO> productDTOList =
-                products.stream().map(product -> mapper.map(product,ProductDTO.class)).collect(Collectors.toList());
-
-        return productDTOList;
+        return products;
     }
 
     @Override
     public void delete(int id) {
         log.info("");
         productDAO.delete(id);
+    }
+
+    @Override
+    public Product find(long productId) {
+        Product product= productDAO.find(productId);
+        return product;
     }
 
 }

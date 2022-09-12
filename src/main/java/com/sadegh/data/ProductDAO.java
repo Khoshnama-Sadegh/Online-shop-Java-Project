@@ -12,4 +12,6 @@ public interface ProductDAO {
     List<Product> finAll();
 
     void delete(int id);
+
+    Product find(long productId);
 }

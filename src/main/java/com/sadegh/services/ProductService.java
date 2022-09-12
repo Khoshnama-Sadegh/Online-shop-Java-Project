@@ -11,7 +11,9 @@ public interface ProductService {
     void save(Product product);
 
 
-    List<ProductDTO> findAll();
+    List<Product> findAll();
 
     void delete(int id);
+
+    Product find(long productId);
 }
