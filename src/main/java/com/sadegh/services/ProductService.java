@@ -16,4 +16,6 @@ public interface ProductService {
     void delete(int id);
 
     Product find(long productId);
+
+    List<Product> getAllProductsByBrandOrModelOrCategory(String searchTerm);
 }
