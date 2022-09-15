@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/dummy")
 @AllArgsConstructor
 @Data
 public class CustomerRegisterController {

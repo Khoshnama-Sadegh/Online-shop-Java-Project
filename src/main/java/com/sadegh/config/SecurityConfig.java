@@ -24,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, enabled from users WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, authorityType from authorities where username=? ")
+                .usersByUsernameQuery("SELECT username, password, enabled from users WHERE username= ?")
+                .authoritiesByUsernameQuery("SELECT username, authorityType from authorities where username = ?")
                 .passwordEncoder(passwordEncoder());
 
 
@@ -41,16 +41,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests().antMatchers("/**").permitAll();// every one can see
 
+        http.csrf().disable();
+
         http.authorizeRequests().
-                antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/customer/**").access("hasRole('USER')")
-                .and().logout().logoutSuccessUrl("/login?logout")
-                .and().formLogin().loginPage("/login").successHandler(successHandler())
-                .loginProcessingUrl("")
+                antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/customer/**").hasRole("USER")
+
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied")
+
+
+                .and()
+
+                .logout().logoutSuccessUrl("/login?logout")
+
+                .and()
+
+
+                .formLogin().loginPage("/login")
+                .loginProcessingUrl("/j_spring_security_check")
                 .failureUrl("/login?error")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/home");
     }
 
 

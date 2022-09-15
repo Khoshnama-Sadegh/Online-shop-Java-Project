@@ -36,8 +36,8 @@
                 <div class="form-group has-success">
                     <label class="col-xs-3 control-label" ></label>
                     <div class="col-xs-9">
-                        <c:if test="${not empty msg}">
-                            <div class="msg">${msg}</div>
+                        <c:if test="${not empty logout}">
+                            <div class="msg">${logout}</div>
                         </c:if>
                     </div>
                 </div>
@@ -94,5 +94,4 @@
 
 
 <%@include file="/WEB-INF/views/template/footer.jsp"%>
-Footer
 
