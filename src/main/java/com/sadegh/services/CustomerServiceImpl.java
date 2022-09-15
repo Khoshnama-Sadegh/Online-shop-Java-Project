@@ -30,7 +30,8 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public List<Customer> getAllCustomers() {
-        return null;
+        List<Customer> customers= customerDao.findAll();
+        return customers;
     }
 
     @Override

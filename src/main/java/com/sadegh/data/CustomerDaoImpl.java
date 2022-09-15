@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -15,8 +16,8 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Autowired
     SessionFactory sessionFactory;
-//    @PersistenceContext
-//    EntityManager entityManager;
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
     public void save(Customer customer) {
@@ -36,7 +37,9 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return entityManager.createQuery("from Customer").getResultList();
+
+
     }
 
     @Override

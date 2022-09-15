@@ -19,7 +19,7 @@
         <div class="form-layout" >
 
 
-            <form:form   action="${pageContext.request.contextPath}/customer/register"   method="post" modelAttribute="customer"     class="form-horizontal"  >
+            <form:form   action="${pageContext.request.contextPath}/dummy/register"   method="post" modelAttribute="customer"     class="form-horizontal"  >
 
 
                 <div class="form-group has-success">
